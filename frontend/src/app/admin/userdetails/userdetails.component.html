@@ -1,0 +1,171 @@
+
+
+
+
+
+<div class="col-sm-10 haris pt-1">
+  <h1> Users details</h1>
+<!-- 
+  <form  (ngSubmit)="timeEmployee(edit21frm)" #edit21frm="ngForm" >
+    <label for="from">Employee Active Time:</label>
+
+    <div class="form-group col-sm-12 row">
+      <label for="from">From:</label>
+  
+      <input type="time" id="from"  [(ngModel)]="from" class="col-sm-2 form-control  ml-1"  name="from" ngModel  required>
+      <label for="to" class='ml-1 '>to:</label>
+      
+      <input type="time" id="to"  [(ngModel)]="to" class="col-sm-2 form-control ml-1"  name="to" ngModel  required>
+
+      <button type="submit" name="button" class=" ml-1 btn btn-success"   >Done</button>
+
+    </div>
+
+    
+  </form> -->
+
+    <table id="usertable" table datatable class="ml-2 mt-6   table-striped table-bordered" style="width:98%" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+      <thead>
+        <tr>
+          
+        <th>User Name</th>    
+        <th>Role</th>
+        <th>User Email</th>
+        <!-- <th>Branch Number</th> -->
+        <th>Status</th>
+          
+        <th>Actions</th>
+    
+          
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let u of userDataList">
+          
+        <td>{{u.username}}</td>
+        <td>{{u.usertype}}</td>
+        <td>{{u.email}}</td>
+        <!-- <td>{{u.bn}}</td> -->
+
+        <td>{{u.status}}</td>
+
+            <td><button type="button" class="btn-xs  fa fa-trash " id="remove" (click)="deleteRow(u)" data-toggle="modal"  ></button>
+            
+              <button type="button" class="btn-xs fa fa-edit ml-1 " data-toggle="modal" data-target="#editus" (click)="clickuser(u) "></button>
+            
+            
+          </td>
+          </tr>
+         
+      </tbody>
+    </table>
+  
+  
+  
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="editus" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" id='cl' aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  (ngSubmit)="edituser(editfrm)" #editfrm="ngForm" class="row">
+          <h2 id="add-user" class="col-sm-12">Users Details</h2>
+          <div class="form-group col-sm-6">
+            <label for="">User Name</label>
+            <input type="text" pattern="[A-Za-z]{10}"  [(ngModel)]="user_name"   class="form-control" name="username"  ngModel username required>
+            <!-- {{user_name}} -->
+          </div>
+         
+          <div class="form-group col-sm-6">
+            <label for="">Email</label>
+            <input type="text" class="form-control"  [(ngModel)]="email1" name="email" value="" placeholder="name@email.com" ngModel email required>
+          </div>
+          <!-- <div class="form-group  col-sm-6">
+              <label for="" >Branch Number:      </label>
+                 
+               <input list="browsers" name="bn"  [(ngModel)]="bn" placeholder="Enter Branch Number" class="form-control"  ngModel required>
+                 <datalist id="browsers">
+                   <option value="none">
+                   
+                 </datalist>
+                <div>
+                <label  for="">For Admin select none</label>
+               </div>
+               </div> -->
+              
+          <div class="form-group col-sm-6">
+            <label for="">Role:       </label>
+            <div class="haris1">
+            <input type="radio" name="role" class="form-control-sm" value="Admin" [(ngModel)]="role2" ngModel required> Admin
+            <!-- <div> -->
+            <input type="radio" name="role" class="form-control-sm" value="Student" [(ngModel)]="role2" ngModel required>Student
+        
+          </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="">Status:       </label>
+            <div class="haris1">
+            <input type="radio" name="status" class="form-control-sm" value="Active" [(ngModel)]="status1" ngModel required> Active
+            <!-- <div> -->
+            <input type="radio" name="status" class="form-control-sm" value="Suspended" [(ngModel)]="status1" ngModel required>Suspended
+            <!-- </div> -->
+          </div>
+          </div>
+
+       
+
+          <div class="modal-footer" >
+              <button type="submit" name="button" class="btn btn-success"   >Done</button>
+      
+            </div>
+            <!-- <div class="modal-footer ">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id='cl' (click)="getUserData()">Close</button>
+      
+            </div> -->
+        </form>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+

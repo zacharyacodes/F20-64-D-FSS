@@ -1,0 +1,37 @@
+<div class="card   text-white ">
+  <img class=" " style="width:100%;height:100%;" src='./assets/images/hhh.jpg' alt="">
+  <div class="card-img-overlay mt-4">
+    <div class="row">
+      <div style="margin-left: 40%;" class="logo col-sm-2   mt-2 ">
+        <img style="width:100%;height:100%;" src='./assets/images/logo1.jpeg' class="" alt="logo ">
+      </div>
+    </div>
+    <div class="row  ml-3" >
+      <div class="col-sm-5 offset-sm-3  mt-3">
+        <div class="card ml-5" style="background: rgba(255, 255, 255, 0.9); border-radius: 50px">
+          <div class="card-body">
+            <form (ngSubmit)="onSignIn(signedInForm)" #signedInForm="ngForm">
+              <div class="form-group">
+                <label style="color:black" for="exampleInputEmail1"><b>Email address</b></label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="Enter email" ngModel email required>
+                <small id="emailHelp" style="color:black" class="form-text">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label style="color: black;" for="exampleInputPassword1"><b>Password</b></label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                  placeholder="Password" ngModel password required>
+              </div>
+
+              <button type="button" class="offset-sm-2 ml-4 btn btn-primary" (click)='nav()'>Register</button>
+           
+              <button type="submit" class="offset-sm-2 ml-4 btn btn-success">Submit</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

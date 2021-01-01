@@ -1,0 +1,57 @@
+
+  .add{
+    margin-left: 1000px;
+    margin-bottom:10px;
+  }
+  .button2 {
+  
+    padding: 1px 20px;
+    margin-top: 8px;
+  }
+
+  .cross{
+    background-color: red;
+    padding: 1px 20px;
+    margin-top: 8px;
+    border: none;
+  }
+  @media only screen and (min-width: 768px) {
+    .haris{
+      margin-left: 255px; 
+    }
+    .bbb{
+      margin-left: 60px; 
+
+    }
+    .w{
+      width: 350px;
+    }
+    
+  }
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .modalwi{
+
+    }
+    .back{
+    height: 600px;
+    }
+    .zoomedElement {
+      /* background-color: #CCF; */
+      zoom: 20%;
+    }
+    
+  }
+  @media only screen and (min-device-width: 480px)
+  and (max-device-width: 640px)
+  and (orientation: landscape) {
+
+.bbb{
+width: 200px;
+}
+.aaa{
+width: 150px;
+
+}
+}

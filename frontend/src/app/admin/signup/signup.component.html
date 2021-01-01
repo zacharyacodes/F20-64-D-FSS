@@ -1,0 +1,61 @@
+
+    <div class="row">
+      <div class="col-sm-5 offset-sm-4 mt-3">
+       
+
+        <div class="card ml-5" style="background:  rgba(41, 38, 189, 0.2); border-radius: 50px">
+          <div class="card-body">
+            <form (ngSubmit)="onSignup(signedupForm)" #signedupForm="ngForm">
+              <div class="form-group">
+                <label style="color:black" for="exampleInputname"><b>Username</b></label>
+                <input type="text" name="username" class="form-control" id="exampleInputtext"
+                  aria-describedby="textHelp" placeholder="Enter Username" ngModel username required>
+                <small id="emailHelp" style="color:black" class="form-text">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group ">
+                <label style="color:black" for="exampleInputEmail1"><b>Email address</b></label>
+               <div class="row">
+                <input type="email" autofocus autocomplete="off" name="email" class="form-control col-sm-5 ml-3" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email"  ngModel email required>
+                <a class='col-sm-5' style="margin-top: 2%;"><b>@nu.edu.pk</b></a>
+               </div>
+                
+                <small id="emailHelp" style="color:black" class="form-text">We'll never share your email with anyone
+                  else.</small>
+              </div>
+              <div class="form-group">
+                <label style="color: black;" for="exampleInputPassword1"><b>Password</b></label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                  placeholder="Enter Password" ngModel required>
+              </div>
+
+              <div class="form-group">
+                <label style="color: black;" for="exampleInputPassword1"><b>Confirm Password</b></label>
+                <input type="password" name="confirmPassword" class="form-control" id="exampleInputPassword2"
+                  placeholder="Enter Confirm Password" ngModel required>
+              </div>
+
+              <div class="radio row text-dark">
+                <div class="col-sm-6">
+                  <input type="radio" name="usertype" value="Admin" id='admin' checked ngModel required>
+                  <label>&nbsp; Admin</label>
+                </div>
+
+              
+                
+                <div class="col-sm-6">
+                  <input type="radio" name="usertype" id='emp' value="Student " ngModel required>
+                  <label>&nbsp; Student </label>
+                </div>
+</div>
+               
+              
+
+              <button type="submit" class="offset-sm-2 ml-4 btn btn-primary">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ 

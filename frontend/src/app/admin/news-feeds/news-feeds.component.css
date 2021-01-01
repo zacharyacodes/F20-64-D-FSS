@@ -1,0 +1,97 @@
+.blog .image {
+    height: auto;
+    overflow: hidden;
+    border-radius: 3px 0 0 3px;
+}
+
+.blog .image img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+.blog .blog-details {
+    padding: 0 20px 0 0;
+}
+
+.blog {
+    padding: 0;
+}
+
+.well {
+    border: 0;
+    padding: 10px;
+    min-height: 63px;
+    background: #fff;
+    box-shadow: none;
+    border-radius: 3px;
+    position: relative;
+    max-height: 100000px;
+    border-bottom: 2px solid #ccc;
+}
+@media only screen and (min-width: 768px) {
+    .haris{
+      margin-left: 255px; 
+    }
+   
+    
+  }
+.blog .blog-details h2 {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.blog .date .blog-number {
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    text-align: center;
+}    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 700px;
+
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}

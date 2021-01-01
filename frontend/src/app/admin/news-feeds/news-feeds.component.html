@@ -1,0 +1,210 @@
+
+<div class="container haris col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+  <div class='row'>
+    <div class="col-sm-5" *ngIf="status=='adminloggedin'">
+      <button type="button" class="btn btn-primary btn-xm fa fa-plus mb-1 "  data-toggle="modal" data-target="#Addpost"  > Add Posts</button>
+
+    </div>
+
+    <h1 class="col-sm-5" *ngIf="status=='Studentloggedin'">Posts</h1>
+
+    <div class="col-sm-6" *ngIf="status=='adminloggedin'">
+      <button type="button" class="btn btn-primary  btn-xm fa fa-plus mb-1 "  data-toggle="modal" data-target="#Addevent"  > Add Events</button>
+
+    </div>
+
+    <h1 class="col-sm-6" *ngIf="status=='Studentloggedin'">Events</h1>
+  
+  </div>
+
+  <div class="row">
+    <div class=" col-sm-5  custom-scrollbar-css">
+      <div *ngFor="let pro of postlist" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+        <button type="button"   *ngIf="status=='adminloggedin'" style="margin-left: 100%;" class="btn-xs  fa fa-trash  " data-target="#delauth" (click)="del(pro)" data-toggle="modal"  > </button>
+       
+        <div class="well blog">
+            <a >
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="image">
+                            <img src="http://localhost:5000/{{pro.imagesname}}" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="blog-details">
+                            <h2>{{pro.title}}</h2>
+
+                            <p>
+                                {{pro.description}}
+                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique libero et est iaculis, id placerat nisi luctus. Aenean volutpat risus non fermentum feugiat. Etiam facilisis arcu ante, sed molestie diam mollis vel... -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+      
+    </div>
+    <div class=" col-sm-4  custom-scrollbar-css">
+      <div *ngFor="let pro1 of eventList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <button type="button"   *ngIf="status=='adminloggedin'" class="btn-xs  fa fa-trash  "  style="margin-left: 100%;" data-target="#delauth1" (click)="del1(pro1)" data-toggle="modal"  > </button>
+
+        <div class="well blog">
+            <a >
+               
+                <div class="row">
+                    
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="blog-details">
+                            <h2>{{pro1.title}}</h2>
+                            <p>
+                                {{pro1.description}}
+                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique libero et est iaculis, id placerat nisi luctus. Aenean volutpat risus non fermentum feugiat. Etiam facilisis arcu ante, sed molestie diam mollis vel... -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    </div>
+  
+  </div>
+  </div>
+
+  
+  <div class="modal fade back  bd-example-modal-lg" id="Addpost" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add Post</h2>
+          <button type="button" id='cl' class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> 
+        </div>
+        <div class="modal-body">
+          <form  (ngSubmit)="add(add23frm)" #add23frm="ngForm" class="row">
+        
+        
+
+        
+            <div class="form-group col-sm-6">
+              <label for="">Title</label>
+              <input type="text" class="form-control"  autofocus autocomplete="off" placeholder="Enter Title" name="title" value=""  ngModel  required>
+            </div>
+            
+            <div class="form-group col-sm-6">
+              <label for="">Description</label>
+              <textarea  type="text" class="form-control" id='description' name="description" placeholder="Enter Description"   ngModel  required>
+              </textarea>
+              </div>
+        
+
+            <div class="form-group col-sm-12">
+              <div>
+                  <img *ngFor="let url of urls" [src]="url" id='ii'class="rounded  mb-3" width="30%" height="20%">
+              </div>
+              <input type="file"  accept="image/*" id="fileupload" class="form-control" width="200" height="121" id='uu'  (change)="detectFiles($event)"   >
+              <br>
+      
+
+          </div> 
+
+            <div class="modal-footer" >
+  
+              <button type="submit" id="addstockbtn" name="button" class="btn btn-success"   >Done</button> <p class="ml-1 mt-1">  {{addstockbtn}} </p>
+  
+        
+              </div>
+  
+          </form>
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade back  bd-example-modal-lg" id="Addevent" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add Event</h2>
+          <button type="button" id='cl66' class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> 
+        </div>
+        <div class="modal-body">
+          <form  (ngSubmit)="addevent(add2345frm)" #add2345frm="ngForm" class="row">
+
+        
+            <div class="form-group col-sm-6">
+              <label for="">Title</label>
+              <input type="text" class="form-control"  autofocus autocomplete="off" placeholder="Enter Title" name="title" value=""  ngModel  required>
+            </div>
+            
+            <div class="form-group col-sm-6">
+              <label for="">Description</label>
+              <textarea  type="text" class="form-control" id='description' name="description" placeholder="Enter Description"   ngModel  required>
+              </textarea>
+              </div>
+        
+            <div class="modal-footer" >
+  
+              <button type="submit" id="addstockbtn" name="button" class="btn btn-success"   >Done</button> <p class="ml-1 mt-1">  {{addstockbtn}} </p>
+  
+        
+              </div>
+  
+          </form>
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+      
+  <div class="modal fade bd-example-modal-sm" id="delauth" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+       
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" id='cl7' aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5>Are you sure you want to delete this entry?</h5>
+          <button type="button" class="btn btn-sm btn-success"  (click)="deleteRow()">Yes</button>
+          <button type="button" class="btn btn-sm btn-danger" (click)='c()'>No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+      
+  <div class="modal fade bd-example-modal-sm" id="delauth1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+       
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" id='cl71' aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5>Are you sure you want to delete this entry?</h5>
+          <button type="button" class="btn btn-sm btn-success"  (click)="deleteRow1()">Yes</button>
+          <button type="button" class="btn btn-sm btn-danger" (click)='c1()'>No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,172 @@
+<!-- <meta name="viewport" content="initial-scale=1"> -->
+<!-- <div class=""> -->
+   
+  <!-- <img  src="http://localhost:5000/download.jpg"  class="rounded  mb-3 img-fluid" > -->
+
+
+  <div class="col-sm-10  haris pt-1">
+      
+    <!-- <button type="button" class="btn btn-primary btn-xm fa fa-plus  mb-2" [routerLink]="['/b-reports']" > print</button> -->
+   
+  
+    <h1 id='ree'>Grounds Detail  </h1>
+    <button type="button" *ngIf="status=='adminloggedin'" class="btn btn-primary btn-xm fa fa-plus  mb-2" id="add"  data-toggle="modal" data-target="#Add"  > Add </button>
+  
+    <table id="stocktable" table datatable class="ml-2 mt-6   table-striped table-bordered" style="width:98%" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+      <thead>
+        <tr>
+          <th>Name</th>
+         <th *ngIf="status=='adminloggedin'">Actions</th>
+
+        </tr>
+      </thead>
+
+      <!-- clientrecord.slice().reverse() -->
+      <tbody>
+        <tr *ngFor="let pro of productsList">
+        <td >{{pro.name}}</td>
+
+            <td class='row' *ngIf="status=='adminloggedin'">
+          
+            <button type="button"   *ngIf="status=='adminloggedin'" class="btn-xs ml-1 fa fa-trash  " data-target="#delauth" (click)="del(pro)" data-toggle="modal"  > </button>
+            <button type="button"   *ngIf="status=='adminloggedin'" class="btn-xs ml-1   " data-target="#book"  data-toggle="modal" (click)='groundDetails(pro)' >Book </button>
+         
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+  
+  
+  </div>
+  
+
+  <div class="modal fade back  bd-example-modal-md" id="book" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Book Ground</h2>
+          <button type="button" id='cl55' class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> 
+        </div>
+        <div class="modal-body">
+          <form  (ngSubmit)="bookground(addfrm)" #addfrm="ngForm" class="row">
+
+            <div class="form-group col-sm-12">
+
+              <label for="cars">Select Student Name:</label>
+              <select name="name"class="form-control"  size="1" ngModel  required>
+                <option *ngFor="let students of userDataList" value="{{students.username}}">{{students.username}}</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-6">
+              <form  (ngSubmit)="select(selectfrm)" #selectfrm="ngForm" >
+                <label >Select Time <br>Slots:</label>
+                <select name="time"class="form-control" id='timeslots123' size="1"  ngModel  required>
+                  <option value="none"  
+                  >none</option>
+                  <option *ngFor="let timeslots of timeSlotsList, let i = index" value="{{timeslots + '/' +timeSlotsList[i+1] }}"  
+                  [disabled]="timeslots!=nexttime &&selectedTimeslots.length!=0"
+                  >{{timeslots}}</option>
+                </select>
+   
+              <button type="submit" name="button" class="btn btn-primary mt-1"   >Select</button> 
+            
+            </form>
+
+            </div>
+         
+
+            <div class="form-group col-sm-6">
+ 
+              <label class="ml-1  mt-1 badge badge-primary bg-gradient-danger  " *ngFor="let pro1 of selectedTimeslots, let i = index">
+                  <span class="pb-2 align-middle  text-white">{{pro1}}</span>
+
+
+                  <button *ngIf="selectedTimeslots.length-1==i" type="button" class="close" (click)='editclose(i)' aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> 
+
+                </label>
+            </div>
+
+            <div class="modal-footer" >
+  
+              <button type="submit"  name="button" class="btn btn-success"   >Done</button> 
+  
+        
+              </div>
+  
+          </form>
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+  <div class="modal fade back  bd-example-modal-sm" id="Add" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Add Ground</h2>
+          <button type="button" id='cl4' class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> 
+        </div>
+        <div class="modal-body">
+          <form  (ngSubmit)="add(add23frm)" #add23frm="ngForm" class="row">
+        
+
+
+            <div class="form-group col-sm-12">
+              <label for="">Name</label>
+              <input type="text" class="form-control"  autofocus autocomplete="off" placeholder="Enter Name" name="name" value=""  ngModel  required>
+            </div>
+
+            <div class="modal-footer" >
+  
+              <button type="submit" id="addstockbtn" name="button" class="btn btn-success"   >Done</button> <p class="ml-1 mt-1">  {{addstockbtn}} </p>
+  
+        
+              </div>
+  
+          </form>
+  
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+ 
+
+
+  
+  <!-- </div> -->
+      
+      <div class="modal fade bd-example-modal-sm" id="delauth" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+           
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" id='cl7' aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h5>Are you sure you want to delete this entry?</h5>
+              <button type="button" class="btn btn-sm btn-success"  (click)="deleteRow()">Yes</button>
+              <button type="button" class="btn btn-sm btn-danger" (click)='c()'>No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+
